@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3000/api/auth";
+const API_URL = "https://ecommaterialui.onrender.com";//http://localhost:3000/api/auth
 
 export const register = async (userData) => {
     return axios.post(`${API_URL}/register`, userData, { withCredentials: true });
