@@ -19,7 +19,7 @@ import axios from "axios";
 // };
 
 
-export const API_URL = "http://localhost:3000";
+export const API_URL = "https://ecommaterialui.onrender.com";//http://localhost:3000
 
 export const checkAuthStatus =`${API_URL}/api/auth/status`;
 
