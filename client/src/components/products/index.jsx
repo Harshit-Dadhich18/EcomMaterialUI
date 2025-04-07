@@ -1,7 +1,7 @@
 import { useTheme } from "@mui/material/styles"
 import { Container, Grid2, useMediaQuery } from "@mui/material"
 // import { products } from "../../data";
-import SingleProduct from "./SinglePRoduct";
+import SingleProduct from "./SingleProduct";
 import Grid from '@mui/material/Grid2';
 import SingleProductDesktop from "./SingleProductDesktop";
 import { useEffect, useState } from "react";
