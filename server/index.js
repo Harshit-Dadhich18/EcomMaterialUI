@@ -31,7 +31,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(cors({
         origin: "https://mybags.onrender.com",
         credentials: true,
-    ));
+}));
 
 const sessionConfig = {
     secret: 'thishouldbeabettersecret',
