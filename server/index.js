@@ -28,10 +28,7 @@ mongoose.connect(process.env.MONGODB, {
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
-app.use(cors({
-    origin: "https://mybags.onrender.com", // Set this to your frontend URL
-    credentials: true, // Allow cookies and authentication headers
-}));
+app.use(cors());
 
 const sessionConfig = {
     secret: 'thishouldbeabettersecret',
