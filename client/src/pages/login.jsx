@@ -85,8 +85,8 @@ export default function Login() {
         setNotifications(true); 
       }
     } catch (err) {
-      // console.error(err.response?.data?.message || "Login failed");
-      // setErrors({ general: "Invalid username or password" });
+      console.error(err.response?.data?.message || "Login failed");
+      setErrors({ general: "Invalid username or password" });
       setNotificationMessage("Invalid username or password!");
       setNotificationColor(Colors.danger);
       setNotifications(true);
