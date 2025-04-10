@@ -45,6 +45,7 @@ const sessionConfig = {
     cookie: { // the Date.now() always given in the miliseconds
         httpOnly: true,
         secure: false,
+        sameSite: 'none',
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7, // 1000{miliseconds}*60{seconds}*60{minutes}*24{hours}*7{days}
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
