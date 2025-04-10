@@ -42,6 +42,8 @@ router.post("/logout", (req, res) => {
 });
 
 router.get("/status", (req, res) => {
+    console.log("Session check - isAuthenticated:", req.isAuthenticated());
+    console.log("User from session:", req.user);
     if (req.isAuthenticated()) {
         res.json({ isAuthenticated: true, user: req.user });
     } else {
