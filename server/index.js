@@ -3,6 +3,7 @@ const cors = require('cors');
 const mongoose = require('mongoose')
 const user = require('./Routes/user')
 const session = require('express-session');
+const MongoStore = require('connect-mongo'); 
 const passport = require('passport');
 const LocalStrategy = require("passport-local").Strategy;
 const User = require('./models/user')
@@ -37,6 +38,10 @@ const sessionConfig = {
     secret: 'thishouldbeabettersecret',
     resave: false,
     saveUninitialized: false,
+    store: MongoStore.create({
+        mongoUrl: process.env.MONGODB, // Use the same MongoDB URI
+        collectionName: 'sessions',
+    }),
     cookie: { // the Date.now() always given in the miliseconds
         httpOnly: true,
         secure: false,
