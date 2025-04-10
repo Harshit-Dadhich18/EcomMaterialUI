@@ -14,7 +14,7 @@ const ProtectedRoute = ({ children }) => {
       await axios.get(checkAuthStatus,{ withCredentials: true })
       setIsAuthenticated(true));
       }
-      catch((err){
+      catch(err){
         setIsAuthenticated(false));
         navigate("/login"));
       }
