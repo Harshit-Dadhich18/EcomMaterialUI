@@ -12,11 +12,11 @@ const ProtectedRoute = ({ children }) => {
     const checkAuth = async()=>{
       try{
       await axios.get(checkAuthStatus,{ withCredentials: true })
-      setIsAuthenticated(true));
+      setIsAuthenticated(true);
       }
       catch(err){
-        setIsAuthenticated(false));
-        navigate("/login"));
+        setIsAuthenticated(false);
+        navigate("/login");
       }
     } // Redirect if not authenticated
     checkAuth(); 
