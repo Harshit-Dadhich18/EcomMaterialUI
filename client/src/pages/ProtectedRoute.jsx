@@ -10,12 +10,17 @@ const ProtectedRoute = ({ children }) => {
 
   useEffect(() => {
     const checkAuth = async()=>{
+      try{
       await axios.get(checkAuthStatus,{ withCredentials: true })
-      .then(() => setIsAuthenticated(true))
-      .catch(() => navigate("/login"));
+      setIsAuthenticated(true));
+      }
+      catch((err){
+        setIsAuthenticated(false));
+        navigate("/login"));
+      }
     } // Redirect if not authenticated
     checkAuth(); 
-  }, []);
+  }, [navigate]);
 
   if (isAuthenticated === null) {
     return (
