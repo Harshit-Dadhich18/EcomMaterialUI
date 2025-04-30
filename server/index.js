@@ -35,31 +35,28 @@ app.use(cors({
 }));
 
 // Create and validate session store
-MongoStore.create({
+const store = MongoStore.create({
     mongoUrl: process.env.MONGODB,
     collectionName: 'sessions',
     touchAfter: 24 * 60 * 60, // optional: reduce write frequency
-}).then(store => {
-    console.log("✅ MongoStore (session) connected");
+});
 
-    const sessionConfig = {
-        secret: 'thisshouldbebettersecret',
-        resave: false,
-        saveUninitialized: false,
-        store,
-        cookie: {
-            httpOnly: true,
-            secure: true, // must be true for HTTPS on Render
-            sameSite: 'None',
-            maxAge: 1000 * 60 * 60 * 24 * 7 // 1000{miliseconds}*60{seconds}*60{minutes}*24{hours}*7{days}
-        }
-    };
+console.log("✅ MongoStore (session) connected");
+
+const sessionConfig = {
+    secret: 'thisshouldbebettersecret',
+    resave: false,
+    saveUninitialized: false,
+    store,
+    cookie: {
+        httpOnly: true,
+        secure: true, // must be true for HTTPS on Render
+        sameSite: 'None',
+        maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
+    }
+};
 
 app.use(session(sessionConfig));
-})
-.catch(err => {
-    console.log("Mongoose Error: ", err);
-});
 
 app.use(passport.initialize());
 app.use(passport.session());
