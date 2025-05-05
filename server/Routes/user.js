@@ -6,34 +6,31 @@ const {register} = require('../controllers/userController');
 router.post('/register',register);
 router.post("/login", (req, res, next) => {
     passport.authenticate("local", (err, user, info) => {
-        if (err) {
-            return next(err);  
-        }
+        if (err) return next(err);
 
         if (!user) {
-            return res.status(401).json({ success: false, message: "Invalid credentials" });  
+            return res.status(401).json({ success: false, message: "Invalid credentials" });
         }
 
-        req.login(user, (err) => {  // Establish a session after successful login
-            if (err) {
-                return next(err);  // Handle errors during session creation
-            
-             req.session.save((err) => {
+        req.login(user, (err) => {
+            if (err) return next(err);
+
+            // ✅ Ensure session is saved before sending the response
+            req.session.save((err) => {
                 if (err) return next(err);
-             
-            // Send a successful response along with user data
+
                 return res.json({
                     success: true,
                     user: {
                         id: user._id,
                         username: user.username,
                         email: user.email,
-                        isAdmin: user.isAdmin,  // Send isAdmin to the frontend
+                        isAdmin: user.isAdmin,
                     },
                 });
             });
         });
-    })(req, res, next);  // Call authenticate middleware manually
+    })(req, res, next);
 });
 
 
