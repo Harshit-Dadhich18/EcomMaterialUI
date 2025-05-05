@@ -17,20 +17,20 @@ router.post("/login", (req, res, next) => {
         req.login(user, (err) => {  // Establish a session after successful login
             if (err) {
                 return next(err);  // Handle errors during session creation
-            }
+            
              req.session.save((err) => {
                 if (err) return next(err);
-             }
-
+             
             // Send a successful response along with user data
-            return res.json({
-                success: true,
-                user: {
-                    id: user._id,
-                    username: user.username,
-                    email: user.email,
-                    isAdmin: user.isAdmin,  // Send isAdmin to the frontend
-                },
+                return res.json({
+                    success: true,
+                    user: {
+                        id: user._id,
+                        username: user.username,
+                        email: user.email,
+                        isAdmin: user.isAdmin,  // Send isAdmin to the frontend
+                    },
+                });
             });
         });
     })(req, res, next);  // Call authenticate middleware manually
