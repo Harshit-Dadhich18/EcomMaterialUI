@@ -18,6 +18,9 @@ router.post("/login", (req, res, next) => {
             if (err) {
                 return next(err);  // Handle errors during session creation
             }
+             req.session.save((err) => {
+                if (err) return next(err);
+             }
 
             // Send a successful response along with user data
             return res.json({
