@@ -37,7 +37,7 @@ app.use(cors({
 // Create and validate session store
 const store = MongoStore.create({
     mongoUrl: process.env.MONGODB,
-    collectionName: 'sessions',
+    collectionName: 'EcomSessions',
     touchAfter: 24 * 60 * 60, // optional: reduce write frequency
 });
 
