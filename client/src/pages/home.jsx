@@ -37,7 +37,7 @@ export default function Home() {
                     <Cart />
                     <SearchBox />
                     <ProductDetails />
-                    <Chatbot />
+                    
                     <Footer />
                     <Profile />
                     <ContactUs />
