@@ -10,7 +10,6 @@ import SearchBox from '../components/search';
 import { UIProvider } from '../components/context/ui';
 import ProductDetails from '../components/ProductDetails';
 import AppDrawer from '../drawer';
-import Chatbot from '../../chatbot';
 import Footer from '../footer';
 import Cart from '../components/cart';
 import Profile from '../components/Profile';
